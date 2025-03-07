@@ -26,19 +26,14 @@ class _CardAppState extends State<CardApp> {
   }
 
   void _generateCardDetails() {
-    // Generate a random 16-digit card number in 4 groups
     final random = math.Random();
     cardNumber = List.generate(
             4, (_) => List.generate(4, (_) => random.nextInt(10)).join(''))
         .join(' ');
-
-    // Generate expiry date (random month and year)
     final month = (random.nextInt(12) + 1).toString().padLeft(2, '0');
     final year =
         (DateTime.now().year + random.nextInt(5)).toString().substring(2);
     expiryDate = '$month/$year';
-
-    // Generate random 3-digit CVV
     cvv = List.generate(3, (_) => random.nextInt(10)).join('');
   }
 
